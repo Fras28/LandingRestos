@@ -369,16 +369,6 @@
             </div>
           </div>
 
-          <div class="col-lg-6 menu-item filter-specialty">
-            <img src="assets/img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Tuscan Grilled</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-            </div>
-          </div>
-
           <div class="col-lg-6 menu-item filter-starters">
             <img src="assets/img/menu/morzi.jpeg" class="menu-img" alt="">
             <div class="menu-content">
@@ -625,13 +615,13 @@
     <!-- ======= Book A Table Section ======= -->
     <section id="book-a-table" class="book-a-table">
       <div class="container" data-aos="fade-up">
-
+    
         <div class="section-title">
           <h2>Reserva</h2>
           <p>Formulario de reserva</p>
         </div>
-
-        <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+    
+        <form id="reservation-form" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100" onsubmit="openMailer()" >
           <div class="row">
             <div class="col-lg-4 col-md-6 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Tu Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
@@ -650,28 +640,30 @@
               <div class="validate"></div>
             </div>
             <div class="col-lg-4 col-md-6 form-group mt-3">
-              <input type="text" class="form-control" name="time" id="time" placeholder="Hora" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="time" class="form-control" name="time" id="time" placeholder="Hora" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
             <div class="col-lg-4 col-md-6 form-group mt-3">
-              <input type="number" class="form-control" name="people" id="people" placeholder="Cantida de invvitados" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+              <input type="number" class="form-control" name="people" id="people" placeholder="Cantidad de invitados" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
               <div class="validate"></div>
             </div>
           </div>
           <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Detalle del evento"></textarea>
+            <textarea class="form-control" name="message" id="message" rows="5" placeholder="Detalle del evento"></textarea>
             <div class="validate"></div>
           </div>
           <div class="mb-3">
             <div class="loading">Loading</div>
-            <div class="error-message"></div>
+             <!-- <div class="error-message"></div>-->
             <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
           </div>
-          <div class="text-center"><button type="submit">Book a Table</button></div>
+          <div class="text-center"><button type="submit">Reservar mesa</button></div>
         </form>
-
       </div>
-    </section><!-- End Book A Table Section -->
+    </section>
+
+    
+    <!-- End Book A Table Section -->
 
     <!-- ======= Testimonials Section ======= -->
     <!-- <section id="testimonials" class="testimonials section-bg">
@@ -1082,9 +1074,37 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+
+  
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script>
+    function openMailer() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        var date = document.getElementById("date").value;
+        var time = document.getElementById("time").value;
+        var people = document.getElementById("people").value;
+        var message = document.getElementById("message").value;
+
+        var subject = 'Reserva de mesa';
+        var body = 'Nombre: ' + name + '\n' +
+                    'Email: ' + email + '\n' +
+                    'Teléfono: ' + phone + '\n' +
+                    'Fecha: ' + date + '\n' +
+                    'Hora: ' + time + '\n' +
+                    'Cantidad de invitados: ' + people + '\n' +
+                    'Detalle del evento: ' + message;
+
+        var mailtoLink = 'mailto:fselvarolo28@gmail.com' + '?subject=' + subject + '&body=' + encodeURIComponent(body);
+        window.open(mailtoLink, '_blank');
+    }
+</script>
+
+  
+  
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
