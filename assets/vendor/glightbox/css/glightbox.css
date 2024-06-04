@@ -110,7 +110,9 @@
 .glightbox-container .ginner-container.gvideo-container {
   width: 100%;
 }
-
+.video-container{
+  max-height: 80dvh;
+}
 .glightbox-container .ginner-container.desc-bottom,
         .glightbox-container .ginner-container.desc-top {
   -webkit-box-orient: vertical;
