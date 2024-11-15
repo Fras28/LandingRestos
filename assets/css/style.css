@@ -588,6 +588,26 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0;
 }
 
+/* Estilos para las imágenes en la galería */
+.gallery-item img {
+  max-height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Opcional: agregar algunos estilos adicionales para mejorar la galería */
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.gallery-item a {
+  display: block;
+}
+
+
+
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
